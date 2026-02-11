@@ -1,5 +1,6 @@
 package com.example.helloworld_aulaintrodutoria
 
+import android.media.Image
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -16,13 +17,21 @@ import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -50,13 +59,19 @@ class MainActivity : ComponentActivity() {
                             color = Color(0xFFEDF2F4),
                             shape = RoundedCornerShape(16.dp),
                             modifier = Modifier
-                                .size(320.dp)
-
+                                .width(320.dp),
+                            shadowElevation = 10.dp,
                         ){
                             Column (
                                 modifier = Modifier.padding(24.dp),
                                 horizontalAlignment = Alignment.CenterHorizontally
                             ){
+                                Icon(
+                                    imageVector = Icons.Default.Person,
+                                    contentDescription = "Ícone de perfil",
+                                    modifier = Modifier.size(64.dp)
+                                )
+
 
                                 Text(
                                     text = "Guerreiro Kotlin",
@@ -97,6 +112,18 @@ class MainActivity : ComponentActivity() {
                                     fontSize = 14.sp
                                 )
 
+                                Spacer(modifier = Modifier.height(12.dp))
+
+                                Button(
+                                    onClick = { println("Botão clicado!") },
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(bottom = 12.dp),
+                                    // colors = ButtonDefaults.buttonColors(containerColor = Color.Green)
+                                ) {
+                                    Text(text = "Evoluir personagem")
+
+                                }
                             }
 
 
@@ -109,6 +136,7 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
 }
 
 @Composable
